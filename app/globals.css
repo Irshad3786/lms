@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-yellow: #EDDE5D;
+  --color-brand-orange: #F09819;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+  --color-slate-800: #1e293b;
+  --color-slate-700: #334155;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-200: #e2e8f0;
+}
+
+:root {
+  --background: #020617; /* Slate 950 default for premium dark dashboard */
+  --foreground: #f8fafc;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Cards */
+.glass-panel {
+  background: rgba(30, 41, 59, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(240, 152, 25, 0.35); /* brand-orange glow */
+  box-shadow: 0 10px 30px -10px rgba(240, 152, 25, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Custom Gradient Button */
+.btn-primary {
+  background: linear-gradient(135deg, #EDDE5D 0%, #F09819 100%);
+  color: #020617; /* high-contrast dark text */
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  opacity: 0.95;
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(240, 152, 25, 0.45);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Glowing text */
+.text-glow {
+  text-shadow: 0 0 10px rgba(237, 222, 93, 0.3);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f09819;
+}

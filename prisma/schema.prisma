@@ -1,0 +1,45 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated-client"
+}
+
+model User {
+  id           String         @id @default(uuid())
+  email        String         @unique
+  name         String
+  password     String
+  role         String         // "admin" or "employee"
+  leaveBalance Int            @default(15)
+  leaves       LeaveRequest[]
+  notifications Notification[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model LeaveRequest {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  startDate    DateTime
+  endDate      DateTime
+  days         Int
+  type         String   // "Annual", "Sick", "Unpaid"
+  reason       String
+  status       String   // "PENDING" | "APPROVED" | "REJECTED"
+  adminNotes   String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

@@ -33,8 +33,8 @@ npm install
 ### Step 2: Configure Environment Variables
 Verify or create a file named `.env` in the root folder:
 ```env
-DATABASE_URL="postgresql://postgres:Bablu%40786@localhost:5433/leave_management?schema=public"
-JWT_SECRET="super-secret-leave-management-key-12345"
+DATABASE_URL="postgresql://username:password@localhost:5433/database_name?schema=public"
+JWT_SECRET="your_jwt_secret_here"
 ```
 
 ### Step 3: Run the Database Container
